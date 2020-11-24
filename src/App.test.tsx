@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import App from './App'
 import { mocked } from 'ts-jest'
 
@@ -30,9 +31,9 @@ describe('when everything is ok', () => {
     screen.getByLabelText('input:')
   })
 
-  test('should select the p element by its text', () => {
+  test('should select the multiple element by its text', () => {
     //screen.getByText('you typed: ...') // <- going to fail bc there are multiple elements
-    expect(screen.getAllByText('you typed: ...').length).toEqual(2)
+    expect(screen.getAllByText('multiple element').length).toEqual(2)
   })
 
 
@@ -59,3 +60,13 @@ describe('when the component fetches the user successfully', () => {
     expect(await screen.findByText('Username: John'))
   })
 })
+
+describe('when the users enters text in the input element', async () => {
+  render(<App />)
+  await waitFor(() => expect(mockGetUser).toHaveBeenCalled())
+
+  // fireEvent.change(screen.getAllByRole('textbox')[0], { target: { value: 'David' }})
+  await userEvent.type(screen.getAllByRole('textbox')[0], 'David') // more realistic event
+  expect(screen.getByText('you typed: David'))
+})
+
