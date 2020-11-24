@@ -30,6 +30,11 @@ describe('when everything is ok', () => {
     screen.getByLabelText('input:')
   })
 
+  test('should select the p element by its text', () => {
+    //screen.getByText('you typed: ...') // <- going to fail bc there are multiple elements
+    expect(screen.getAllByText('you typed: ...').length).toEqual(2)
+  })
+
 
   test('should not find the role "what" in our component', () => {
     expect(screen.queryByRole('what')).toBeNull()

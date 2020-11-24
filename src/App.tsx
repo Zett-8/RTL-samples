@@ -24,6 +24,7 @@ const App = () => {
       {user ? <p>Username: {user.name}</p> : null}
       <CustomInput value={text} onChange={handleChange}>input:</CustomInput>
       <p>you typed: { text ? text : '...' }</p>
+      <p>you typed: { text ? text : '...' }</p>
     </div>
   )
 }
