@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import CustomInput from './CustomInput'
 import { getUser, User } from './get-user'
 import './App.css'
 
@@ -26,21 +27,6 @@ const App = () => {
       <p>you typed: { text ? text : '...' }</p>
       <p>multiple element</p>
       <p>multiple element</p>
-    </div>
-  )
-}
-
-interface CustomInputProps {
-  children: React.ReactNode,
-  value: string,
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void
-}
-
-const CustomInput = ({ children, value, onChange }: CustomInputProps) => {
-  return (
-    <div>
-      <label htmlFor={'search'}>{children}</label>
-      <input id={'search'} type={'text'} value={value} onChange={onChange} />
     </div>
   )
 }
