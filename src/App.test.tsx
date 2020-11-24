@@ -45,4 +45,12 @@ describe('when the component fetches the user successfully', () => {
     render(<App />)
     await waitFor(() => expect(mockGetUser).toHaveBeenCalledTimes(1))
   })
+
+  test('should render the username passed', async () => {
+    mockGetUser.mockImplementationOnce(() => Promise.resolve({ id: '1', name: 'John' }))
+    render(<App />)
+
+    expect(screen.queryByText('Username')).toBeNull()
+    expect(await screen.findByText('Username: John'))
+  })
 })
