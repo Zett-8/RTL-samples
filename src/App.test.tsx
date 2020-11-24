@@ -22,4 +22,9 @@ describe('when everything is ok', () => {
   test('should select the label element by its text', () => {
     screen.getByLabelText('input:')
   })
+
+
+  test('should not find the role "what" in our component', () => {
+    expect(screen.queryByRole('what')).toBeNull()
+  })
 })
