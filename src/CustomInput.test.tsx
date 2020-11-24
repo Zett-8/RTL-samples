@@ -1,13 +1,9 @@
 import React from 'react'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CustomInput from './CustomInput'
-import { mocked } from 'ts-jest'
-
-import { getUser } from './get-user'
 
 jest.mock('./get-user')
-const mockGetUser = mocked(getUser, true)
 
 describe('when everything is ok', () => {
   test('should call the onChange callback handler with fireEvent', () => {
